@@ -21,4 +21,5 @@ You are free to share your ideas and code to improve this Repo. This repo is des
 
 ## Resources 
 [Git Internals by John Britton of GitHub](https://www.youtube.com/watch?v=lG90LZotrpo)
+
 [Git Internals - How Git Works](https://www.youtube.com/watch?v=P6jD966jzlk)
