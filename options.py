@@ -11,6 +11,7 @@ def init_parser():
     parser_add.add_argument("file",type=str,help="File to add")
 
     parser_commit = subparsers.add_parser("commit",help="Commit changes to repo")
+    parser_commit.add_argument("-m",type=str,help="commit message")
     return parser
 
 if __name__ == "__main__":

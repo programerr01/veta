@@ -11,7 +11,7 @@ git_dir = os.path.join(os.getcwd(),".veta")
 
 
 
-def commit():
+def commit(commit_msg):
     # commit checks if the veta is initialized or not
     # if not initialized then it returns -1
     # if initialized then it generates the latest tree and create a new commit object   
@@ -26,7 +26,7 @@ def commit():
         print(tree_data);
         tree_hash_value = hash(tree_data)
         generate_object(str(tree_hash_value), tree_data)
-        commit_data = generate_latest_commit(tree_hash_value);
+        commit_data = generate_latest_commit(tree_hash_value,commit_msg);
         commit_hash_value = hash(commit_data)
         generate_object(str(commit_hash_value), commit_data)    
         #set head reference to latest commit
@@ -37,12 +37,12 @@ def commit():
         ref_ = f"tree {tree_hash_value} NULL\n"
         return set_index_file(ref_)
 
-def generate_latest_commit(tree_reference):
+def generate_latest_commit(tree_reference,commit_msg):
     # generate a new object for the commit with data including 
     # commit message, tree reference and parent commit reference
     commit_data = "";
     date_ = datetime.now().strftime("%a %b %d %H:%M:%S %Y %z")
-    commit_data += f"Admin,commit message,{date_}\n"
+    commit_data += f"Admin,{commit_msg},{date_}\n"
     commit_data += f"tree,{tree_reference}\n"
 
     #check for HEAD file to get the parent commit reference

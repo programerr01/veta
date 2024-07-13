@@ -13,8 +13,10 @@ def main():
     if(parsed_arguments.command == "add"):
        add_file(parsed_arguments.file) 
     if(parsed_arguments.command == "commit"):
-        print("Commit")
-        commit()
+        if(not parsed_arguments.m):
+            print("Enter Commit message")
+            return -1;
+        commit(parsed_arguments.m)
 
 if __name__ == "__main__":
     main()
