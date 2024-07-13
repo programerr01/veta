@@ -11,7 +11,7 @@ def add_file(file_name):
         return -1;
     file_path = os.path.join(os.getcwd(),file_name)
     if(not os.path.isfile(file_path)):
-        print("Given File doesn't exists")
+        print(file_name ,"doesn't exists")
         return -1;
     return add_file_helper(file_name)
 
