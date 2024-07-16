@@ -34,7 +34,6 @@ def generate_latest_tree():
     if(not file_contents):
         return -2;
     file_contents = file_contents.strip().split("\n")
-    print(file_contents)
     tree_content = ""
     tree_reference = "NULL\n";
     for each in file_contents:
@@ -46,6 +45,8 @@ def generate_latest_tree():
             tree_reference = f"tree {hash_value} NULL\n"
             continue;
         tree_content += f"blob {hash_value} {file_name}\n"
+    if(tree_content == ""):
+        return -2
     tree_content = tree_reference + tree_content
     return tree_content 
 
