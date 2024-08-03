@@ -13,6 +13,26 @@ def initialize_empty_repo():
         return 3;
     return initialize_empty_repo_folder() 
 
+def add_file_to_tracking(file_name):
+    tracking_file = os.path.join(os.getcwd(), ".veta", "tracking.txt")
+    if not os.path.isfile(tracking_file):
+        with open(tracking_file, "w") as f:
+            line = f"{file_name},{os.path.getmtime(file_name)}\n"
+            f.write(line)
+            return
+    if os.path.isfile(file_name):
+        with open(tracking_file, "r+") as f:
+            lines = f.readlines()
+            f.seek(0)
+            for line in lines:
+                if file_name in line:
+                    line = f"{file_name},{os.path.getmtime(file_name)}\n"
+                f.write(line)
+            f.truncate()
+    else:
+        print(f"File '{file_name}' does not exist.")
+
+
 
 def initialize_empty_repo_folder(folder_path=None):
     if(not folder_path):

@@ -1,5 +1,5 @@
 import os 
-from helper.inode_helper import generate_object,check_initialization
+from helper.inode_helper import generate_object,check_initialization,add_file_to_tracking
 from helper.custom_helper import convert_byte_to_binary,hash
 from helper.common_helper import update_index
 git_dir = os.path.join(os.getcwd(),".veta")
@@ -23,4 +23,5 @@ def add_file_helper(file_name):
     hash_value = hash(byte_arr)
     generate_object(str(hash_value), byte_arr) 
     update_index(hash_value,file_name);
+    add_file_to_tracking(file_name);
 

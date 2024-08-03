@@ -12,6 +12,9 @@ def init_parser():
 
     parser_commit = subparsers.add_parser("commit",help="Commit changes to repo")
     parser_commit.add_argument("-m",type=str,help="commit message")
+
+    parser_status = subparsers.add_parser("status",help="Get Current Snapshot of the repo")
+
     return parser
 
 if __name__ == "__main__":
